@@ -1,0 +1,59 @@
+Arguments: 
+  /snap/node/5856/bin/node /snap/node/5856/bin/yarn.js install
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-17-oracle/bin:/usr/lib/jvm/java-17-oracle/db/bin:/home/dicky/Android/Sdk/emulator:/home/dicky/Android/Sdk/tools:/home/dicky/Android/Sdk/tools/bin:/home/dicky/Android/Sdk/platform-tools:/home/dicky/.npm-global/bin:/home/dicky/Android/Sdk/emulator:/home/dicky/Android/Sdk/tools:/home/dicky/Android/Sdk/tools/bin:/home/dicky/Android/Sdk/platform-tools:/home/dicky/.npm_packages/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  14.19.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.22.35:443 - Local (0.0.0.0:0)
+      at internalConnect (net.js:934:16)
+      at defaultTriggerAsyncIdScope (internal/async_hooks.js:452:18)
+      at emitLookup (net.js:1077:9)
+      at /snap/node/5856/lib/cli.js:107658:28
+      at /snap/node/5856/lib/cli.js:107567:13
+      at RawTask.module.exports.RawTask.call (/snap/node/5856/lib/cli.js:83655:19)
+      at flush (/snap/node/5856/lib/cli.js:83737:29)
+      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+      at runNextTicks (internal/process/task_queues.js:64:3)
+      at processImmediate (internal/timers.js:437:9)
+
+npm manifest: 
+  {
+    "name": "myproject",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~44.0.0",
+      "expo-status-bar": "~1.2.0",
+      "react": "17.0.1",
+      "react-dom": "17.0.1",
+      "react-native": "0.64.3",
+      "react-native-web": "0.17.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
