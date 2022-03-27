@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 
+// Custom Button
 const AppButton = ({ onPress, title }) => (
   <TouchableOpacity
     activeOpacity={0.95}
@@ -13,22 +21,31 @@ const AppButton = ({ onPress, title }) => (
 
 const App = () => {
   const [name, setName] = useState("dicky");
-  const [person, setPerson] = useState({ name: "diaz", age: 20 });
-
-  const handlerName = () => {
-    setName("azka");
-    setPerson({ name: "vera", age: 24 });
-  };
+  const [age, setAge] = useState("30");
 
   return (
     <View style={styles.container}>
-      <Text>My name is {name}</Text>
+      <Text>Enter Name:</Text>
+      <TextInput
+        multiline
+        style={styles.input}
+        placeholder="e.g. John Doe"
+        // change automatically update state name
+        onChangeText={(value) => setName(value)}
+      />
+
+      <Text>Enter Age:</Text>
+      <TextInput
+        keyboardType="numeric"
+        style={styles.input}
+        placeholder="e.g. 80"
+        // change automatically update state age
+        onChangeText={(value) => setAge(value)}
+      />
+
       <Text>
-        His name {person.name} and age {person.age}
+        name: {name}, age: {age}
       </Text>
-      <View style={styles.buttonContainer}>
-        <AppButton title="update state" onPress={handlerName} />
-      </View>
     </View>
   );
 };
@@ -40,20 +57,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonContainer: {
-    marginTop: 20,
-  },
-  appButtonContainer: {
-    backgroundColor: "#25bc5d",
+  input: {
+    borderWidth: 1,
     borderRadius: 20,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-  },
-  appButtonText: {
-    fontSize: 16,
-    color: "#fff",
-    alignSelf: "center",
-    textTransform: "capitalize",
+    borderColor: "#010101",
+    padding: 8,
+    paddingLeft: 15,
+    marginVertical: 10,
+    width: 200,
   },
 });
 
