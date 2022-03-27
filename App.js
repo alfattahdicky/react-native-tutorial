@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+
+const AppButton = ({ onPress, title }) => (
+  <TouchableOpacity
+    activeOpacity={0.95}
+    onPress={onPress}
+    style={styles.appButtonContainer}
+  >
+    <Text style={styles.appButtonText}>{title}</Text>
+  </TouchableOpacity>
+);
 
 const App = () => {
   const [name, setName] = useState("dicky");
@@ -17,7 +27,7 @@ const App = () => {
         His name {person.name} and age {person.age}
       </Text>
       <View style={styles.buttonContainer}>
-        <Button title="update state" onPress={handlerName} />
+        <AppButton title="update state" onPress={handlerName} />
       </View>
     </View>
   );
@@ -32,6 +42,18 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 20,
+  },
+  appButtonContainer: {
+    backgroundColor: "#25bc5d",
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+  },
+  appButtonText: {
+    fontSize: 16,
+    color: "#fff",
+    alignSelf: "center",
+    textTransform: "capitalize",
   },
 });
 
