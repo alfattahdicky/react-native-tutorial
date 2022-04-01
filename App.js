@@ -1,27 +1,33 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 
 const App = () => {
   const [people, setPeople] = useState([
-    { name: "shaun", key: "1" },
-    { name: "gemini", key: "2" },
-    { name: "dicky", key: "3" },
-    { name: "azka", key: "4" },
-    { name: "vera", key: "5" },
-    { name: "diaz", key: "6" },
-    { name: "amun", key: "7" },
+    { name: "shaun", id: "1" },
+    { name: "gemini", id: "2" },
+    { name: "dicky", id: "3" },
+    { name: "azka", id: "4" },
+    { name: "vera", id: "5" },
+    { name: "diaz", id: "6" },
+    { name: "amun", id: "7" },
   ]);
 
   return (
-    // need key prop in parent component
+    // can use id but using attribute in flatlist is keyExtractor
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList
+        numColumns={3}
+        keyExtractor={(item) => item.id}
+        data={people}
+        renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+      />
+      {/* <ScrollView>
         {people.map((item) => (
           <View key={item.key}>
             <Text style={styles.item}>{item.name}</Text>
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 };
@@ -40,6 +46,7 @@ const styles = StyleSheet.create({
     padding: 30,
     backgroundColor: "green",
     fontSize: 16,
+    marginHorizontal: 10,
   },
 });
 
