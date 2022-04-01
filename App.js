@@ -1,51 +1,27 @@
 import React, { useState } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
-
-// Custom Button
-const AppButton = ({ onPress, title }) => (
-  <TouchableOpacity
-    activeOpacity={0.95}
-    onPress={onPress}
-    style={styles.appButtonContainer}
-  >
-    <Text style={styles.appButtonText}>{title}</Text>
-  </TouchableOpacity>
-);
+import { Button, StyleSheet, Text, View, ScrollView } from "react-native";
 
 const App = () => {
-  const [name, setName] = useState("dicky");
-  const [age, setAge] = useState("30");
+  const [people, setPeople] = useState([
+    { name: "shaun", key: "1" },
+    { name: "gemini", key: "2" },
+    { name: "dicky", key: "3" },
+    { name: "azka", key: "4" },
+    { name: "vera", key: "5" },
+    { name: "diaz", key: "6" },
+    { name: "amun", key: "7" },
+  ]);
 
   return (
+    // need key prop in parent component
     <View style={styles.container}>
-      <Text>Enter Name:</Text>
-      <TextInput
-        multiline
-        style={styles.input}
-        placeholder="e.g. John Doe"
-        // change automatically update state name
-        onChangeText={(value) => setName(value)}
-      />
-
-      <Text>Enter Age:</Text>
-      <TextInput
-        keyboardType="numeric"
-        style={styles.input}
-        placeholder="e.g. 80"
-        // change automatically update state age
-        onChangeText={(value) => setAge(value)}
-      />
-
-      <Text>
-        name: {name}, age: {age}
-      </Text>
+      <ScrollView>
+        {people.map((item) => (
+          <View key={item.key}>
+            <Text style={styles.item}>{item.name}</Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -54,17 +30,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 40,
+    paddingHorizontal: 20,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
-  input: {
-    borderWidth: 1,
-    borderRadius: 20,
-    borderColor: "#010101",
-    padding: 8,
-    paddingLeft: 15,
-    marginVertical: 10,
-    width: 200,
+  item: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: "green",
+    fontSize: 16,
   },
 });
 
